@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="da67ba479ade4d8997509cc263d25da0" Name="Diagram1">
+        <EntityTypeShape EntityType="DBModel.BANKS" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.CREDIT_STATUS" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.CREDITS" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.FIZLICO" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.GENDER" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.LOCATIONS" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.MARITAL_STATUS" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.NATIONALITIES" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.URLICO" Width="1.5" PointX="10.5" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="DBModel.BANK_LOCATION" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.CREDIT_BANK" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.CREDIT_CSTATUS" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FIZLICO_CREDIT" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.URLICO_CREDIT" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FIZLICO_GENDER" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FIZLICO_LOCATION" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FIZLICO_MSTATUS" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FIZLICO_NATIONALITY" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.URLICO_LOCATION" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,85 @@
+﻿@using WebService.WebClient.Models
+@model WebService.WebClient.Models.FIZLICO
+
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+
+<h2>@ViewBag.Title</h2>
+<h4>FIZLICO</h4>
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.FIZLICO_ID)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FULL_NAME)
+            @Html.EditorFor(model => model.FULL_NAME)
+            @Html.ValidationMessageFor(model => model.FULL_NAME)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PHONE_NUMBER)
+            @Html.EditorFor(model => model.PHONE_NUMBER)
+            @Html.ValidationMessageFor(model => model.PHONE_NUMBER)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDCARD_ANN)
+            @Html.EditorFor(model => model.IDCARD_ANN)
+            @Html.ValidationMessageFor(model => model.IDCARD_ANN)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DATE_BIRTH)
+            @Html.EditorFor(model => model.DATE_BIRTH)
+            @Html.ValidationMessageFor(model => model.DATE_BIRTH)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GENDER_ID)
+            @Html.EditorFor(model => model.GENDER_ID)
+            @Html.ValidationMessageFor(model => model.GENDER_ID)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MSTATUS_ID)
+            @Html.EditorFor(model => model.MSTATUS_ID)
+            @Html.ValidationMessageFor(model => model.MSTATUS_ID)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NATIONALITY_ID)
+            @Html.EditorFor(model => model.NATIONALITY_ID)
+            @Html.ValidationMessageFor(model => model.NATIONALITY_ID)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CREDIT_ID)
+            @Html.EditorFor(model => model.CREDIT_ID)
+            @Html.ValidationMessageFor(model => model.CREDIT_ID)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LOCATION_ID)
+            @Html.EditorFor(model => model.LOCATION_ID)
+            @Html.ValidationMessageFor(model => model.LOCATION_ID)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-default" />
+            <input type="reset" value="Reset" class="btn btn-default" />
+        </div>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

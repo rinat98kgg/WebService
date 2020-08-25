@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DBModelContainer" CdmEntityContainer="Entities1">
+    <EntitySetMapping Name="BANKS">
+      <EntityTypeMapping TypeName="DBModel.BANKS">
+        <MappingFragment StoreEntitySet="BANKS">
+          <ScalarProperty Name="BANK_ID" ColumnName="BANK_ID" />
+          <ScalarProperty Name="BANK_NAME" ColumnName="BANK_NAME" />
+          <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CREDIT_STATUS">
+      <EntityTypeMapping TypeName="DBModel.CREDIT_STATUS">
+        <MappingFragment StoreEntitySet="CREDIT_STATUS">
+          <ScalarProperty Name="CSTATUS_ID" ColumnName="CSTATUS_ID" />
+          <ScalarProperty Name="CSTATUS_NAME" ColumnName="CSTATUS_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CREDITS">
+      <EntityTypeMapping TypeName="DBModel.CREDITS">
+        <MappingFragment StoreEntitySet="CREDITS">
+          <ScalarProperty Name="CREDIT_ID" ColumnName="CREDIT_ID" />
+          <ScalarProperty Name="BANK_ID" ColumnName="BANK_ID" />
+          <ScalarProperty Name="CREDIT_SUM" ColumnName="CREDIT_SUM" />
+          <ScalarProperty Name="SROK_PERYEAR" ColumnName="SROK_PERYEAR" />
+          <ScalarProperty Name="DATE_ISSUE" ColumnName="DATE_ISSUE" />
+          <ScalarProperty Name="PERCENT_PERYEAR" ColumnName="PERCENT_PERYEAR" />
+          <ScalarProperty Name="FINE_PERYEAR" ColumnName="FINE_PERYEAR" />
+          <ScalarProperty Name="CSTATUS_ID" ColumnName="CSTATUS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FIZLICO">
+      <EntityTypeMapping TypeName="DBModel.FIZLICO">
+        <MappingFragment StoreEntitySet="FIZLICO">
+          <ScalarProperty Name="FIZLICO_ID" ColumnName="FIZLICO_ID" />
+          <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+          <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+          <ScalarProperty Name="IDCARD_ANN" ColumnName="IDCARD_ANN" />
+          <ScalarProperty Name="DATE_BIRTH" ColumnName="DATE_BIRTH" />
+          <ScalarProperty Name="GENDER_ID" ColumnName="GENDER_ID" />
+          <ScalarProperty Name="MSTATUS_ID" ColumnName="MSTATUS_ID" />
+          <ScalarProperty Name="NATIONALITY_ID" ColumnName="NATIONALITY_ID" />
+          <ScalarProperty Name="CREDIT_ID" ColumnName="CREDIT_ID" />
+          <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GENDER">
+      <EntityTypeMapping TypeName="DBModel.GENDER">
+        <MappingFragment StoreEntitySet="GENDER">
+          <ScalarProperty Name="GENDER_ID" ColumnName="GENDER_ID" />
+          <ScalarProperty Name="GENDER_NAME" ColumnName="GENDER_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOCATIONS">
+      <EntityTypeMapping TypeName="DBModel.LOCATIONS">
+        <MappingFragment StoreEntitySet="LOCATIONS">
+          <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+          <ScalarProperty Name="STREET_ADDRESS" ColumnName="STREET_ADDRESS" />
+          <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+          <ScalarProperty Name="CITY_PROVINCE" ColumnName="CITY_PROVINCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MARITAL_STATUS">
+      <EntityTypeMapping TypeName="DBModel.MARITAL_STATUS">
+        <MappingFragment StoreEntitySet="MARITAL_STATUS">
+          <ScalarProperty Name="MSTATUS_ID" ColumnName="MSTATUS_ID" />
+          <ScalarProperty Name="MSTATUS_NAME" ColumnName="MSTATUS_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NATIONALITIES">
+      <EntityTypeMapping TypeName="DBModel.NATIONALITIES">
+        <MappingFragment StoreEntitySet="NATIONALITIES">
+          <ScalarProperty Name="NATIONALITY_ID" ColumnName="NATIONALITY_ID" />
+          <ScalarProperty Name="NATIONALITY_NAME" ColumnName="NATIONALITY_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="URLICO">
+      <EntityTypeMapping TypeName="DBModel.URLICO">
+        <MappingFragment StoreEntitySet="URLICO">
+          <ScalarProperty Name="URLICO_ID" ColumnName="URLICO_ID" />
+          <ScalarProperty Name="URLICO_NAME" ColumnName="URLICO_NAME" />
+          <ScalarProperty Name="URLICO_PHONE" ColumnName="URLICO_PHONE" />
+          <ScalarProperty Name="CREDIT_ID" ColumnName="CREDIT_ID" />
+          <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,96 @@
+﻿@model IEnumerable<WebService.WebClient.Models.FIZLICO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<p>
+    <a href="@Url.Action("AddOrEdit", "Fizlicoes")" class="btn btn-default"><i class="fa fa-plus"></i> Create New</a>
+</p>
+
+<table class="table table-striped">
+    <thead class="table-heading">
+        <tr>
+            <th>
+                ФИО
+            </th>
+            <th>
+                Телефон
+            </th>
+            <th>
+                ANN
+            </th>
+            <th>
+               Дата рожд.
+            </th>
+            <th>
+                Пол
+            </th>
+            <th>
+                Сем-е пол-е
+            </th>
+            <th>
+                Нац-ть
+            </th>
+            <th>
+                Адрес прож-я
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FULL_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PHONE_NUMBER)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDCARD_ANN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATE_BIRTH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GENDER.GENDER_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MARITAL_STATUS.MSTATUS_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NATIONALITIES.NATIONALITY_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOCATIONS.STREET_ADDRESS)
+            </td>
+            <td>
+                <a href="@Url.Action("AddOrEdit", "Fizlicoes", new { id = item.FIZLICO_ID })" class="btn btn-default"> <i class="fa fa-pencil"></i> Edit</a>
+                <a onclick="Delete(@item.FIZLICO_ID)" class="btn btn-default"> <i class="fa fa-trash"></i> Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section  scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+        function Delete(id) {
+            alertify.confirm('Ishenim WebService', 'Are You Sure to Delete this Record ?', function () {
+                window.location.href = '@Url.Action("Delete", "Fizlicoes")/' + id;
+            }, null);
+        }
+    </script>
+}

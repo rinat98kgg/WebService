@@ -1,0 +1,36 @@
+﻿@model WebService.WebClient.Models.GENDER
+
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+
+<h2>@ViewBag.Title</h2>
+<h4>GENDER</h4>
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.GENDER_ID)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.GENDER_NAME)
+            @Html.EditorFor(model => model.GENDER_NAME)
+            @Html.ValidationMessageFor(model => model.GENDER_NAME)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-default" />
+            <input type="reset" value="Reset" class="btn btn-default" />
+        </div>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

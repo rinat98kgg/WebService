@@ -1,0 +1,175 @@
+﻿@model IEnumerable<WebService.WebClient.Models.BORROWER>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div>
+    <h4>BORROWER</h4>
+    <hr />
+
+    <h3>@ViewBag.NotValue</h3>
+
+    <dl class="dl-horizontal">
+        @foreach (var item in Model)
+        {
+            <dt>
+                ID заемщика
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.FIZLICO_ID)
+            </dd>
+
+            <dt>
+                ФИО
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.FULL_NAME)
+            </dd>
+
+            <dt>
+                Номер телефона
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.PHONE_NUMBER)
+            </dd>
+
+            <dt>
+                Паспортные данные
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.IDCARD_ANN)
+            </dd>
+
+            <dt>
+                Дата рождения
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.DATE_BIRTH)
+            </dd>
+
+            <dt>
+                Пол
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.GENDER_NAME)
+            </dd>
+
+            <dt>
+                Семейное положение
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.MSTATUS_NAME)
+            </dd>
+
+            <dt>
+                Национальность
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.NATIONALITY_NAME)
+            </dd>
+
+            <dt>
+                Номер договора
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.CREDIT_ID)
+            </dd>
+
+            <dt>
+                 Банк
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.BANK_NAME)
+            </dd>
+
+            <dt>
+                Сумма кредита
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.CREDIT_SUM)
+            </dd>
+
+            <dt>
+                Срок
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.SROK_PERYEAR)
+            </dd>
+
+            <dt>
+                Дата получения
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.DATE_ISSUE)
+            </dd>
+
+            <dt>
+                Проценты (в год)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.PERCENT_PERYEAR)
+            </dd>
+
+            <dt>
+                Процент пени
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.FINE_PERYEAR)
+            </dd>
+
+            <dt>
+                Статус кредита
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.CSTATUS_NAME)
+            </dd>
+
+            <dt>
+                Адрес проживания
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.STREET_ADDRESS)
+            </dd>
+
+            <dt>
+                Почтовый индекс
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.POSTAL_CODE)
+            </dd>
+
+            <dt>
+                Город / Район
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.CITY_PROVINCE)
+            </dd>
+        }
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Назад в главное окно", "Index", "BORROWER")
+</p>

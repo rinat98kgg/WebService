@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebService.WebClient.Models.GENDER>
+
+@{
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<p>
+    <a href="@Url.Action("AddOrEdit", "Genders")" class="btn btn-default"><i class="fa fa-plus"></i> Create New</a>
+</p>
+
+<table class="table table-striped">
+    <thead class="table-heading">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GENDER_NAME)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GENDER_NAME)
+            </td>
+            <td>
+                <a href="@Url.Action("AddOrEdit", "Genders", new { id = item.GENDER_ID })" class="btn btn-default"> <i class="fa fa-pencil"></i> Edit</a>
+                <a onclick="Delete(@item.GENDER_ID)" class="btn btn-default"> <i class="fa fa-trash"></i> Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section  scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+        function Delete(id) {
+            alertify.confirm('Ishenim WebService', 'Are You Sure to Delete this Record ?', function () {
+                window.location.href = '@Url.Action("Delete", "Genders")/' + id;
+            }, null);
+        }
+    </script>
+}

@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище DBModel" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BANKS">
+    <Key>
+      <PropertyRef Name="BANK_ID" />
+    </Key>
+    <Property Name="BANK_ID" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="BANK_NAME" Type="nchar" MaxLength="25" />
+    <Property Name="LOCATION_ID" Type="number" Precision="6" Scale="0" />
+  </EntityType>
+  <EntityType Name="CREDIT_STATUS">
+    <Key>
+      <PropertyRef Name="CSTATUS_ID" />
+    </Key>
+    <Property Name="CSTATUS_ID" Type="number" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="CSTATUS_NAME" Type="nchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="CREDITS">
+    <Key>
+      <PropertyRef Name="CREDIT_ID" />
+    </Key>
+    <Property Name="CREDIT_ID" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="BANK_ID" Type="number" Precision="6" Scale="0" />
+    <Property Name="CREDIT_SUM" Type="number" Precision="8" Scale="0" />
+    <Property Name="SROK_PERYEAR" Type="number" Precision="4" Scale="0" />
+    <Property Name="DATE_ISSUE" Type="date" />
+    <Property Name="PERCENT_PERYEAR" Type="number" Precision="4" Scale="0" />
+    <Property Name="FINE_PERYEAR" Type="number" Precision="4" Scale="0" />
+    <Property Name="CSTATUS_ID" Type="number" Precision="4" Scale="0" />
+  </EntityType>
+  <EntityType Name="FIZLICO">
+    <Key>
+      <PropertyRef Name="FIZLICO_ID" />
+    </Key>
+    <Property Name="FIZLICO_ID" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="FULL_NAME" Type="nchar" MaxLength="50" />
+    <Property Name="PHONE_NUMBER" Type="nchar" MaxLength="15" />
+    <Property Name="IDCARD_ANN" Type="nchar" MaxLength="20" />
+    <Property Name="DATE_BIRTH" Type="date" />
+    <Property Name="GENDER_ID" Type="number" Precision="4" Scale="0" />
+    <Property Name="MSTATUS_ID" Type="number" Precision="4" Scale="0" />
+    <Property Name="NATIONALITY_ID" Type="number" Precision="4" Scale="0" />
+    <Property Name="CREDIT_ID" Type="number" Precision="6" Scale="0" />
+    <Property Name="LOCATION_ID" Type="number" Precision="6" Scale="0" />
+  </EntityType>
+  <EntityType Name="GENDER">
+    <Key>
+      <PropertyRef Name="GENDER_ID" />
+    </Key>
+    <Property Name="GENDER_ID" Type="number" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="GENDER_NAME" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="LOCATIONS">
+    <Key>
+      <PropertyRef Name="LOCATION_ID" />
+    </Key>
+    <Property Name="LOCATION_ID" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="STREET_ADDRESS" Type="nchar" MaxLength="45" />
+    <Property Name="POSTAL_CODE" Type="nchar" MaxLength="12" />
+    <Property Name="CITY_PROVINCE" Type="nchar" MaxLength="35" />
+  </EntityType>
+  <EntityType Name="MARITAL_STATUS">
+    <Key>
+      <PropertyRef Name="MSTATUS_ID" />
+    </Key>
+    <Property Name="MSTATUS_ID" Type="number" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="MSTATUS_NAME" Type="nchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="NATIONALITIES">
+    <Key>
+      <PropertyRef Name="NATIONALITY_ID" />
+    </Key>
+    <Property Name="NATIONALITY_ID" Type="number" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="NATIONALITY_NAME" Type="nchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="URLICO">
+    <Key>
+      <PropertyRef Name="URLICO_ID" />
+    </Key>
+    <Property Name="URLICO_ID" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="URLICO_NAME" Type="nchar" MaxLength="30" />
+    <Property Name="URLICO_PHONE" Type="nchar" MaxLength="20" />
+    <Property Name="CREDIT_ID" Type="number" Precision="6" Scale="0" />
+    <Property Name="LOCATION_ID" Type="number" Precision="6" Scale="0" />
+  </EntityType>
+  <Association Name="BANK_LOCATION">
+    <End Role="LOCATIONS" Type="Self.LOCATIONS" Multiplicity="0..1" />
+    <End Role="BANKS" Type="Self.BANKS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCATIONS">
+        <PropertyRef Name="LOCATION_ID" />
+      </Principal>
+      <Dependent Role="BANKS">
+        <PropertyRef Name="LOCATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CREDIT_BANK">
+    <End Role="BANKS" Type="Self.BANKS" Multiplicity="0..1" />
+    <End Role="CREDITS" Type="Self.CREDITS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANKS">
+        <PropertyRef Name="BANK_ID" />
+      </Principal>
+      <Dependent Role="CREDITS">
+        <PropertyRef Name="BANK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CREDIT_CSTATUS">
+    <End Role="CREDIT_STATUS" Type="Self.CREDIT_STATUS" Multiplicity="0..1" />
+    <End Role="CREDITS" Type="Self.CREDITS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CREDIT_STATUS">
+        <PropertyRef Name="CSTATUS_ID" />
+      </Principal>
+      <Dependent Role="CREDITS">
+        <PropertyRef Name="CSTATUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FIZLICO_CREDIT">
+    <End Role="CREDITS" Type="Self.CREDITS" Multiplicity="0..1" />
+    <End Role="FIZLICO" Type="Self.FIZLICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CREDITS">
+        <PropertyRef Name="CREDIT_ID" />
+      </Principal>
+      <Dependent Role="FIZLICO">
+        <PropertyRef Name="CREDIT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FIZLICO_GENDER">
+    <End Role="GENDER" Type="Self.GENDER" Multiplicity="0..1" />
+    <End Role="FIZLICO" Type="Self.FIZLICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GENDER">
+        <PropertyRef Name="GENDER_ID" />
+      </Principal>
+      <Dependent Role="FIZLICO">
+        <PropertyRef Name="GENDER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FIZLICO_LOCATION">
+    <End Role="LOCATIONS" Type="Self.LOCATIONS" Multiplicity="0..1" />
+    <End Role="FIZLICO" Type="Self.FIZLICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCATIONS">
+        <PropertyRef Name="LOCATION_ID" />
+      </Principal>
+      <Dependent Role="FIZLICO">
+        <PropertyRef Name="LOCATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FIZLICO_MSTATUS">
+    <End Role="MARITAL_STATUS" Type="Self.MARITAL_STATUS" Multiplicity="0..1" />
+    <End Role="FIZLICO" Type="Self.FIZLICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MARITAL_STATUS">
+        <PropertyRef Name="MSTATUS_ID" />
+      </Principal>
+      <Dependent Role="FIZLICO">
+        <PropertyRef Name="MSTATUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FIZLICO_NATIONALITY">
+    <End Role="NATIONALITIES" Type="Self.NATIONALITIES" Multiplicity="0..1" />
+    <End Role="FIZLICO" Type="Self.FIZLICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NATIONALITIES">
+        <PropertyRef Name="NATIONALITY_ID" />
+      </Principal>
+      <Dependent Role="FIZLICO">
+        <PropertyRef Name="NATIONALITY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="URLICO_CREDIT">
+    <End Role="CREDITS" Type="Self.CREDITS" Multiplicity="0..1" />
+    <End Role="URLICO" Type="Self.URLICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CREDITS">
+        <PropertyRef Name="CREDIT_ID" />
+      </Principal>
+      <Dependent Role="URLICO">
+        <PropertyRef Name="CREDIT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="URLICO_LOCATION">
+    <End Role="LOCATIONS" Type="Self.LOCATIONS" Multiplicity="0..1" />
+    <End Role="URLICO" Type="Self.URLICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCATIONS">
+        <PropertyRef Name="LOCATION_ID" />
+      </Principal>
+      <Dependent Role="URLICO">
+        <PropertyRef Name="LOCATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище DBModelContainer">
+    <EntitySet Name="BANKS" EntityType="Self.BANKS" Schema="RINAT" store:Type="Tables" />
+    <EntitySet Name="CREDIT_STATUS" EntityType="Self.CREDIT_STATUS" Schema="RINAT" store:Type="Tables" />
+    <EntitySet Name="CREDITS" EntityType="Self.CREDITS" Schema="RINAT" store:Type="Tables" />
+    <EntitySet Name="FIZLICO" EntityType="Self.FIZLICO" Schema="RINAT" store:Type="Tables" />
+    <EntitySet Name="GENDER" EntityType="Self.GENDER" Schema="RINAT" store:Type="Tables" />
+    <EntitySet Name="LOCATIONS" EntityType="Self.LOCATIONS" Schema="RINAT" store:Type="Tables" />
+    <EntitySet Name="MARITAL_STATUS" EntityType="Self.MARITAL_STATUS" Schema="RINAT" store:Type="Tables" />
+    <EntitySet Name="NATIONALITIES" EntityType="Self.NATIONALITIES" Schema="RINAT" store:Type="Tables" />
+    <EntitySet Name="URLICO" EntityType="Self.URLICO" Schema="RINAT" store:Type="Tables" />
+    <AssociationSet Name="BANK_LOCATION" Association="Self.BANK_LOCATION">
+      <End Role="LOCATIONS" EntitySet="LOCATIONS" />
+      <End Role="BANKS" EntitySet="BANKS" />
+    </AssociationSet>
+    <AssociationSet Name="CREDIT_BANK" Association="Self.CREDIT_BANK">
+      <End Role="BANKS" EntitySet="BANKS" />
+      <End Role="CREDITS" EntitySet="CREDITS" />
+    </AssociationSet>
+    <AssociationSet Name="CREDIT_CSTATUS" Association="Self.CREDIT_CSTATUS">
+      <End Role="CREDIT_STATUS" EntitySet="CREDIT_STATUS" />
+      <End Role="CREDITS" EntitySet="CREDITS" />
+    </AssociationSet>
+    <AssociationSet Name="FIZLICO_CREDIT" Association="Self.FIZLICO_CREDIT">
+      <End Role="CREDITS" EntitySet="CREDITS" />
+      <End Role="FIZLICO" EntitySet="FIZLICO" />
+    </AssociationSet>
+    <AssociationSet Name="FIZLICO_GENDER" Association="Self.FIZLICO_GENDER">
+      <End Role="GENDER" EntitySet="GENDER" />
+      <End Role="FIZLICO" EntitySet="FIZLICO" />
+    </AssociationSet>
+    <AssociationSet Name="FIZLICO_LOCATION" Association="Self.FIZLICO_LOCATION">
+      <End Role="LOCATIONS" EntitySet="LOCATIONS" />
+      <End Role="FIZLICO" EntitySet="FIZLICO" />
+    </AssociationSet>
+    <AssociationSet Name="FIZLICO_MSTATUS" Association="Self.FIZLICO_MSTATUS">
+      <End Role="MARITAL_STATUS" EntitySet="MARITAL_STATUS" />
+      <End Role="FIZLICO" EntitySet="FIZLICO" />
+    </AssociationSet>
+    <AssociationSet Name="FIZLICO_NATIONALITY" Association="Self.FIZLICO_NATIONALITY">
+      <End Role="NATIONALITIES" EntitySet="NATIONALITIES" />
+      <End Role="FIZLICO" EntitySet="FIZLICO" />
+    </AssociationSet>
+    <AssociationSet Name="URLICO_CREDIT" Association="Self.URLICO_CREDIT">
+      <End Role="CREDITS" EntitySet="CREDITS" />
+      <End Role="URLICO" EntitySet="URLICO" />
+    </AssociationSet>
+    <AssociationSet Name="URLICO_LOCATION" Association="Self.URLICO_LOCATION">
+      <End Role="LOCATIONS" EntitySet="LOCATIONS" />
+      <End Role="URLICO" EntitySet="URLICO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
